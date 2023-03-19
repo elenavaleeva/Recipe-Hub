@@ -1,0 +1,28 @@
+<!-- recipe-card.handlebars -->
+<div class="recipe-card">
+  <div class="recipe-image">
+    <img src="{{image}}" alt="{{name}}">
+  </div>
+  <div class="recipe-info">
+    <h2>{{name}}</h2>
+    <p>{{description}}</p>
+    <div class="recipe-details">
+      <div class="ingredients">
+        <h3>Ingredients:</h3>
+        <ul>
+          {{#each ingredients}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+          {{#each instructions}}
+          <li>{{this}}</li>
+          {{/each}}
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
