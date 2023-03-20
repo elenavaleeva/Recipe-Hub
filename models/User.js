@@ -2,6 +2,8 @@ const express = require('express');
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const router = express.Router();
+
 
 // Define the User model
 const User = sequelize.define('User', {

@@ -2,6 +2,8 @@ const express = require('express');
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const router = express.Router();
+
 
 // Define the Recipe model
 const Recipe = sequelize.define('recipe', {
@@ -56,7 +58,4 @@ const User = sequelize.define('user', {
 Recipe.belongsTo(User);
 User.hasMany(Recipe);
 
-module.exports = {
-  Recipe,
-  User
-};
+module.exports = {Recipe, User};
