@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Recipe } = require('../models');
+const { Recipe, recipeRoutes } = require('../models');
 
 // Get all recipes
 router.get('/', async (req, res) => {
@@ -84,4 +84,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = recipeRoutes;
