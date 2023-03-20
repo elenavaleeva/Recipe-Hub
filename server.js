@@ -1,42 +1,64 @@
+const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
+const session = require('express-session');
+const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
-const { User, Recipe } = require('./models');
-const userRoutes = require('./routes/userRoutes');
-const recipeRoutes = require('./routes/recipeRoutes');
+const routes = require('./controllers');
+const helpers = require('./utils/helpers');
+
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.use('/users', userRoutes);
-app.use('/recipes', recipeRoutes);
-
-// Handle invalid routes
-app.use((req, res, next) => {
-  const error = new Error('Invalid route');
-  error.status = 404;
-  next(error);
+// Define routes for your app
+app.get('/', (req, res) => {
+  res.send('Welcome to the Recipe Sharing App!');
 });
 
-// Handle errors
-app.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  res.json({
-    error: {
-      message: err.message
-    }
-  });
+// Add more routes here for creating, reading, updating, and deleting recipes
+app.post('/recipes', (req, res) => {
+  const { name, ingredients, instructions } = req.body;
+  // Save the recipe to a database or other storage system
+  res.status(201).json({ id: 1, name, ingredients, instructions });
 });
 
-// Sync the database and start the server
-User.sync().then(() => {
-  Recipe.sync().then(() => {
-    app.listen(port, () => {
-      console.log(`Server running on port ${port}`);
-    });
-  });
+// Get a list of all recipes
+app.get('/recipes', (req, res) => {
+  // Retrieve the list of recipes from a database or other storage system
+  const recipes = [
+    { id: 1, name: 'Spaghetti Bolognese', ingredients: ['spaghetti', 'tomato sauce', 'ground beef'], instructions: 'Cook spaghetti, brown beef, mix together.' },
+    { id: 2, name: 'Chicken Curry', ingredients: ['chicken', 'curry powder', 'coconut milk'], instructions: 'Cook chicken, mix with curry and coconut milk.' },
+  ];
+  res.json(recipes);
 });
+
+// Update an existing recipe
+app.put('/recipes/:id', (req, res) => {
+  const id = req.params.id;
+  const { name, ingredients, instructions } = req.body;
+  // Update the recipe in a database or other storage system
+  res.json({ id, name, ingredients, instructions });
+});
+
+// Delete an existing recipe
+app.delete('/recipes/:id', (req, res) => {
+  const id = req.params.id;
+  // Delete the recipe from a database or other storage system
+  res.sendStatus(204);
+});
+
+// Start the server
+app.listen( PORT, 3001, () => {
+  console.log(`Now Listening`);
+});
+
+
+
+
+
+
