@@ -40,3 +40,7 @@ User.sync().then(() => {
     });
   });
 });
+
+module.exports = { app };
+module.exports.User = { User };
+module.exports.Recipe = { Recipe };

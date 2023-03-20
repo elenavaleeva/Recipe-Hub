@@ -35,5 +35,5 @@ User.beforeCreate(async (user) => {
 });
 
 
-module.exports = User;
+module.exports = { User };
 
