@@ -21,19 +21,60 @@
 //     }
 // });
 
-const logout = async () => {
-    const response = await fetch('../signup', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+// const logout = async () => {
+//     const response = await fetch('../signup', {
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//     });
+  
+//     if (response.ok) {
+//       document.location.replace('/login');
+//     } else {
+//       alert(response.statusText);
+//     }
+//   };
+  
+//   document.querySelector('#logout').addEventListener('click', logout);
+  
+const form = document.getElementById("signup-form");
+const usernameInput = document.getElementById("signup-username");
+const passwordInput = document.getElementById("signup-password");
+const errorLabel = document.getElementById("signup-error");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault(); // prevent form submission
+
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  // perform input validation
+  if (!username || !password) {
+    errorLabel.textContent = "Please enter both username and password.";
+    return;
+  }
+
+  // perform server-side validation and submit form
+  // (you can replace this with your own implementation)
+  fetch("/signup", {
+    method: "POST",
+    body: JSON.stringify({ username, password }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.error) {
+        errorLabel.textContent = data.error;
+      } else {
+        alert("Sign up successful!");
+        form.reset();
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      errorLabel.textContent = "An error occurred, please try again later.";
     });
-  
-    if (response.ok) {
-      document.location.replace('/login');
-    } else {
-      alert(response.statusText);
-    }
-  };
-  
-  document.querySelector('#logout').addEventListener('click', logout);
-  
+});
+
 
