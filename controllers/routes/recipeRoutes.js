@@ -1,29 +1,33 @@
 const express = require('express');
-const router = express.Router();
+const { Connection } = require('pg');
+const router = require('express').Router();
+const recipe = require('../../models');  
+const { sequelize } = require ('../../config/connection');
+const withAuth = require('../../utils/helpers');
 
-router.get('/recipes', (req, res) => {
-  // Handle GET request for recipes
+
+router.get('/recipe', (req, res) => {
+  router.get('/', async (req, res) => {
+    try {
+        const recipes = await recipe.findAll();
+       res.render('home', { recipes });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+       }
+     });
 });
 
-router.post('/recipes', (req, res) => {
+router.post('/recipe', (req, res) => {
   // Handle POST request for recipes
 });
 
 module.exports = router;
 // const express = require('express');
 // const router = express.Router();
-// const Recipe = require('../../models/recipe');
+// const recipe = require('../../models/recipe');
 
-// // Get all recipes
-// router.get('/', async (req, res) => {
-//   try {
-//     const recipes = await Recipe.findAll();
-//     res.render('home', { recipes });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error');
-//   }
-// });
+
 
 // // Get a single recipe by ID
 // router.get('/:id', async (req, res) => {

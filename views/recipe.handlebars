@@ -1,3 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"> 
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">{{title}}</h1>
+      <nav class="nav">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/recipes">Recipes</a></li>
+          <li><a href="/recipes/new">New Recipe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      {{{body}}}
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; {{year}} {{title}}</p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<!-- Home Page Template -->
+
+<h2>Welcome to {{title}}!</h2>
+
+<p>Our recipe sharing app lets you discover and share your favorite recipes with others.</p>
+
+<p><a href="/recipes" class="btn">View Recipes</a></p>
+
+<!-- Recipe List Template -->
+
+<h2>Recipes</h2>
+
+{{#if recipes.length}}
+  <ul class="recipe-list">
+    {{#each recipes}}
+      <li class="recipe-card">
+        <a href="/recipes/{{id}}">
+          <img src="{{image}}" alt="{{title}}">
+          <div class="details">
+            <h3 class="title">{{title}}</h3>
+            <p class="author">By {{author}}</p>
+            <p class="description">{{description}}</p>
+          </div>
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No recipes found.</p>
+{{/if}}
+
+<!-- Recipe Form Template -->
+
+<h2>New Recipe</h2>
+
+<form class="recipe-form" method="post" action="/recipes">
+  <label for="title">Title</label>
+  <input type="text" id="title" name="title" required>
+
+  <label for="author">Author</label>
+  <input type="text" id="author" name="author" required>
+
+  <label for="image">Image URL</label>
+  <input type="url" id="image" name="image" required>
+
+  <label for="description">Description</label>
+  <textarea id="description" name="description" required></textarea>
+
+  <input type="submit" value="Create Recipe">
+</form>
+
+<!-- Recipe Details Template -->
+
+<div class="recipe-details">
+  <div class="image">
+    <img src="{{recipe.image}}" alt="{{recipe.title}}">
+  </div>
+  <div class="info">
+    <h2 class="title">{{recipe.title}}</h2>
+    <p class="author">By {{recipe.author}}</p>
+    <p class="description">{{recipe.description}}</p>
+  </div>
+</div>
 <!-- recipe-card.handlebars -->
 <div class="recipe-card">
   <div class="recipe-image">

@@ -16,6 +16,22 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+
+const hbs = exphbs.create({ helpers });
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+    })
+    };
+
+app.engine('handlebars', hbs.engine);
+app.set ('view engine', 'handlebars');
+
 // Define routes for your app
 app.get('/', (req, res) => {
   res.send('Welcome to the Recipe Sharing App!');
@@ -57,6 +73,7 @@ app.delete('/recipes/:id', (req, res) => {
 app.listen(PORT, 3001, () => {
   console.log(`Now Listening`);
 });
+
 
 
 

@@ -4,20 +4,9 @@ const userRoutes = require('./routes/userRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 
 router.use('/user', userRoutes);
-// router.use('/', homeRoutes);
+// router.use('/home', homeRoutes);
 
 router.use('/recipes', recipeRoutes);
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = router;

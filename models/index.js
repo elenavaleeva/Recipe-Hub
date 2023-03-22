@@ -30,10 +30,10 @@ const User = require('./user');
 // });
 
 // Hash the password before saving
-User.beforeCreate(async (user) => {
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(user.password, salt);
-});
+// User.beforeCreate(async (user) => {
+//   const salt = await bcrypt.genSalt(10);
+//   user.password = await bcrypt.hash(user.password, salt);
+// });
 
 
 // const sequelize = new Sequelize('database', 'username', 'password', {
@@ -44,7 +44,7 @@ User.beforeCreate(async (user) => {
 // const User = new UserModel(sequelize, Sequelize);
 // const Recipe = RecipeModel(sequelize, Sequelize);
 
-User.hasMany(Recipe, { as: 'recipe' });
-Recipe.belongsTo(User);
+// User.hasMany(Recipe, { as: 'recipe' });
+// Recipe.belongsTo(User);
 
 module.exports = { Sequelize, User, Recipe };

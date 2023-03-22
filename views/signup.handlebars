@@ -1,4 +1,4 @@
-<form action="/signup" method="post">
+{{!-- <form action="/signup" method="post">
     <div>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
@@ -15,4 +15,17 @@
     <div>
         <button type="submit">Sign Up</button>
     </div>
-</form>
+</form> --}}
+
+<form action="#" method="POST" id="signup-form">
+		<h2>Sign up</h2>
+		<label for="signup-username">Username:</label>
+		<input type="text" name="signup-username" id="signup-username" required>
+
+		<label for="signup-password">Password:</label>
+		<input type="password" name="signup-password" id="signup-password" required>
+
+		<input type="submit" value="Sign up">
+
+		<p class="error" id="signup-error"></p>
+	</form>
