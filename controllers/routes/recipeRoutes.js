@@ -1,28 +1,117 @@
 const express = require('express');
 const { Connection } = require('pg');
 const router = require('express').Router();
-const recipe = require('../../models');  
-const { sequelize } = require ('../../config/connection');
+const recipe = require('../../models');
+const { sequelize } = require('../../config/connection');
 const withAuth = require('../../utils/helpers');
 
+// Get all recipes
 
-router.get('/recipe', (req, res) => {
+router.get('/', (req, res) => {
   router.get('/', async (req, res) => {
     try {
-        const recipes = await recipe.findAll();
-       res.render('home', { recipes });
-      } catch (error) {
-        console.error(error);
-        res.status(500).send('Server error');
-       }
-     });
+      const recipes = await recipe.findAll();
+      res.render('home', { recipes });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send('Server error');
+    }
+  });
 });
 
-router.post('/recipe', (req, res) => {
-  // Handle POST request for recipes
+// Get a single recipe by ID
+
+router.get('/:id', async (req, res) => {
+  try {
+    const recipe = await recipe.findByPk(req.params.id);
+    if (recipe) {
+      res.render('recipe', { recipe });
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Create a new recipe
+
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newRecipe = await recipe.create({
+      ...req.body,
+      user_id: req.session.user_id,
+    });
+    res.status(200).json(newRecipe);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Update a recipe
+
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const recipe = await recipe.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+// Delete a recipe
+
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const recipe = await recipe.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
 });
 
 module.exports = router;
+
+
+
+
+// router.get('/recipe', (req, res) => {
+//   router.get('/', async (req, res) => {
+//     try {
+//         const recipes = await recipe.findAll();
+//        res.render('home', { recipes });
+//       } catch (error) {
+//         console.error(error);
+//         res.status(500).send('Server error');
+//        }
+//      });
+// });
+
+// router.post('/recipe', (req, res) => {
+//   // Handle POST request for recipes
+// });
+
+// module.exports = router;
 // const express = require('express');
 // const router = express.Router();
 // const recipe = require('../../models/recipe');

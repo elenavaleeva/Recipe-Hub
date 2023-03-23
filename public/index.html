@@ -9,32 +9,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />"
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
 <body>
+
     <div class="container">
         <div class="meal-wrapper">
             <div class="meal-search">
-                <h2 class="meal-title">Find Meal for your ingredients</h2>
+                <h2 class= "title">Find Meal for your ingredients</h2>
                 <blockquote> Real food doesn't have ingredients, real food is ingredients.<br>
-
-                </blockquote>
+             </blockquote>
                 <div class="meal-search-box">
-                    <input class="search-control" type="text" placeholder="Enter an ingredient" id="search-input" />
+                    <input  type="text" class="search-control" placeholder="Enter an ingredient" id="search-input" />
                     <button type="submit" class="search-btn btn" id="search-btn">
                         <i class="fas fa-search"></i>
                     </button>
-
                 </div>
-
             </div>
 
             <div class="meal-result">
                 <h2 class="title">Your Search Result</h2>
-                <div class="meal-results">
-                    <div class="meal-results-item">
-                        <div id="meal">
+                <div id="meal">
+
+                 <!-- <div class="meal-results"> -->
+                    <div class="meal-results-item"> 
+                        
 
                             <!-- <div class="meal-item-">
                             <div class="meal-img">
@@ -55,30 +55,32 @@
                             </div>
                         </div> -->
                             <div class="meal-details">
-                                <button type="button" class="btn recipe-close-btn" id="fas fa-times">
-                                    <i class="fas fa-times"></i></button>
-
+                                <button type="button" class="btn recipe-close-btn" id="recipe-close-btn">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                    
                                 <div class="meal-details-content">
-                                    <h2 class="recipe-title">Meal name here</h2>
+                                    <!-- <h2 class="recipe-title">Meal name here</h2>
                                     <p class="recipe-category">Category Name</p>
+                                     <div class="recipe-instruct>
                                     <h3>Instructions</h3>
                                     <p>text goes here</p>
                                     <p>Second text goes here</p>
                                 </div>
 
                                 <div class="recipe-meal-img">
-                                    <img src="meal-img img" alt="food">
+                                    <img src="food.jpg" alt="">
                                 </div>
                                 <div class="recipe-link">
                                     <a href="#" target="_blank">Watch Video</a>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
-
                     </div>
                 </div>
             </div>
-            <script src="./main.handlebars"></script>
+
+
+            <script src="/script.js"></script>
 </body>
 
 </html>

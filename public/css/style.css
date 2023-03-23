@@ -125,10 +125,13 @@ body {
 .meal-img img{
     width: 35rem;
     display:inline-flex !important;
-    border-radius: 50%;
-
-    
+    border-radius: 50%;    
    
+}
+
+img{
+    width: 35rem;
+    display:inline!important;
 }
 
 .meal-name{

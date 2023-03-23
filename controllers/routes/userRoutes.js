@@ -1,70 +1,74 @@
 const express = require('express');
 const router = express.Router();
+const { User } = require('../models');
 
-router.get('/users', (req, res) => {
-  // Handle GET request for users
+
+router.get('/', async (req, res) => {
+
+  try {
+    const users = await User.findAll();
+    res.json(users);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+
+  }
 });
 
-router.post('/users', (req, res) => {
-  // Handle POST request for users
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    req.session.userId = userData.id;
+    res.session.loggedIn = true;
+
+    res.status(200).json(userData)
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ where: { email } });
+    if (user && (await bcrypt.compare(password, user.password))) {
+      req.session.userId = user.id;
+      req.session.loggedIn = true;
+      res.status(200).json(user);
+
+    } else {
+      res.status(401).json({ message: 'Incorrect email or password' });
+
+
+    }
+
+    req.session.save(() => {
+      res.session.userId = userData.id;
+      res.session.loggedIn = true;
+
+      req.json({ user: userData, message: 'You are now logged in!' });
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+      console.log('logged out');
+    });
+
+  } else {
+    res.status(404).end();
+  }
 });
 
 module.exports = router;
 
-// const express = require('express');
-// const router = express.Router();
-// const bcrypt = require('bcrypt');
-// const User = require('../../models/user');
-
-// // Signup user
-// router.post('/signup', async (req, res) => {
-//   try {
-//     const { username, email, password } = req.body;
-//     const hashedPassword = await bcrypt.hash(password, 10);
-//     const user = await User.create({
-//       username,
-//       email,
-//       password: hashedPassword
-//     });
-//     req.session.userId = user.id;
-//     res.redirect('/recipes');
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error');
-//   }
-// });
-
-// // Login user
-// router.post('/login', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     const user = await User.findOne({ where: { email } });
-//     if (user) {
-//       const match = await bcrypt.compare(password, user.password);
-//       if (match) {
-//         req.session.userId = user.id;
-//         res.redirect('/recipes');
-//       } else {
-//         res.status(401).send('Invalid email or password');
-//       }
-//     } else {
-//       res.status(401).send('Invalid email or password');
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error');
-//   }
-// });
-
-// // Logout user
-// router.post('/logout', async (req, res) => {
-//   try {
-//     req.session.destroy();
-//     res.redirect('/login');
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error');
-//   }
-// });
-
-// module.exports = userRoutes;
