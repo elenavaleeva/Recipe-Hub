@@ -2,6 +2,7 @@ const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
+const recipeBtn = document.querySelector('.recipe-btn');
 
 const mealItem = document.querySelectorAll('.meal-item');
 
@@ -55,7 +56,10 @@ function getMealRecipe(e) {
             .then(data => mealRecipeModal(data.meals));
 
     }
+
 }
+
+mealDetailsContent.classList.remove('display-none');
 
 
 

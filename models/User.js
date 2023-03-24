@@ -22,29 +22,30 @@ class User extends Model {
 
 
 // Define the User model
-const User = sequelize.define('User', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true,
-    validate: {
-      isEmail: true
+User.init(
+  {
+    id: {
+      type: Sequelize.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        isEmail: true
+      }
+    },
+    password: {
+      type: Sequelize.STRING,
+      allowNull: false
     }
   },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-},
 
   // Hash the password before saving
   {
