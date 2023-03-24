@@ -59,9 +59,6 @@ function getMealRecipe(e) {
 
 }
 
-mealDetailsContent.classList.remove('display-none');
-
-
 
 
 function mealRecipeModal(meal) {
@@ -70,7 +67,7 @@ function mealRecipeModal(meal) {
     let html = `
      <h2 class="recipe-title">${meal.strMeal}</h2>
     <p class="recipe-category">${meal.strCategory}</p>
-    <div class="recipe-instruct>
+    <div class="recipe-instruct">
     <h3>Instructions</h3>
     <p>${meal.strInstructions}</p>
 </div>
