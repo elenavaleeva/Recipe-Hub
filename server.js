@@ -19,18 +19,23 @@ app.use(express.urlencoded({ extended: true })); // for parsing application/x-ww
 
 const hbs = exphbs.create({ helpers });
 
-const sess = {
-  secret: 'Super secret secret',
-  cookie: {},
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-    })
-    };
+// const sess = {
+//   secret: 'Super secret secret',
+//   cookie: {},
+//   resave: false,
+//   saveUninitialized: true,
+//   store: new SequelizeStore({
+//     db: sequelize
+//     })
+//     };
 
 app.engine('handlebars', hbs.engine);
 app.set ('view engine', 'handlebars');
+
+app.get('/', function (req, res) {
+  res.render('index', {title: 'RecipeHub', message: 'Hello!'});
+});
+
 
 // Define routes for your app
 app.get('/', (req, res) => {

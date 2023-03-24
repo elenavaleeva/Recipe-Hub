@@ -14,9 +14,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/elenavaleeva/Recipe-Hub/issues"
+    "url": "https://github.com/elenavaleeva/Recipe-Hub"
   },
-  "homepage": "https://github.com/elenavaleeva/Recipe-Hub#readme",
+  "homepage": "https://github.com/elenavaleeva/Recipe-Hub",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "body": "^5.1.0",
@@ -25,9 +25,11 @@
     "express": "^4.18.2",
     "express-handlebars": "^7.0.2",
     "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
     "mysql2": "^3.2.0",
     "parser": "^0.1.4",
     "pg": "^8.10.0",
+    "router": "^1.3.8",
     "sequelize": "^6.29.3"
   },
   "devDependencies": {

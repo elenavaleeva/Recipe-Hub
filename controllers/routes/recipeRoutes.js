@@ -7,16 +7,14 @@ const withAuth = require('../../utils/helpers');
 
 // Get all recipes
 
-router.get('/', (req, res) => {
-  router.get('/', async (req, res) => {
-    try {
-      const recipes = await recipe.findAll();
-      res.render('home', { recipes });
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Server error');
-    }
-  });
+router.get('/', async (req, res) => {
+  try {
+    const recipes = await recipe.findAll();
+    res.render('home', { recipes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
 });
 
 // Get a single recipe by ID
@@ -37,7 +35,7 @@ router.get('/:id', async (req, res) => {
 
 // Create a new recipe
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newRecipe = await recipe.create({
       ...req.body,
@@ -50,9 +48,10 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+
 // Update a recipe
 
-router.put('/:id', withAuth, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const recipe = await recipe.update(req.body, {
       where: {
@@ -72,7 +71,7 @@ router.put('/:id', withAuth, async (req, res) => {
 
 // Delete a recipe
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const recipe = await recipe.destroy({
       where: {
@@ -91,6 +90,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 });
 
 module.exports = router;
+
 
 
 
