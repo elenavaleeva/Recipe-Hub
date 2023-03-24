@@ -1,8 +1,7 @@
-const express = require('express');
 const Sequelize = require('sequelize');
-const bcrypt = require('bcrypt');
+const { Model, DataType } = require('sequelize');
 const sequelize = require('../config/connection');
-const router = express.Router();
+
 
 
 // Define the Recipe model
@@ -35,27 +34,7 @@ const Recipe = sequelize.define('recipe', {
   }
 });
 
-// Define the User model
-const User = sequelize.define('user', {
-  id: {
-    type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    allowNull: false
-  },
-  username: {
-    type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
-});
 
-// Define the relationship between Recipe and User
-Recipe.belongsTo(User);
-User.hasMany(Recipe);
 
-module.exports = {Recipe, User};
+
+module.exports =  {Recipe};

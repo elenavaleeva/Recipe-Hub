@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const session =require('express-session')
 require('dotenv').config();
 
 let sequelize;
@@ -14,7 +13,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
-      port: 3306
+      port: 3001
     }
   );
 }
