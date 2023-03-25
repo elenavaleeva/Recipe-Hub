@@ -9,11 +9,11 @@ const withAuth = require('../../utils/helpers');
 
 router.get('/', async (req, res) => {
   try {
-    const recipes = await Recipe.findAll();
-    res.render('home', { recipes });
+    // const recipes = await Recipe.findAll();
+    res.render('home',);// { recipes });
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Server error home ln 16');
   }
 });
 
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const recipe = await recipe.findByPk(req.params.id);
+    // const recipe = await recipe.findByPk(req.params.id);
     if (recipe) {
       res.render('recipe', { recipe });
     } else {
@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Server error for ln32');
   }
 });
 
@@ -44,7 +44,7 @@ router.post('/', async (req, res) => {
     res.status(200).json(newRecipe);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Server error ln 47');
   }
 });
 
@@ -65,7 +65,7 @@ router.put('/:id', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Server error ln 68');
   }
 });
 
@@ -85,7 +85,7 @@ router.delete('/:id', async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send('Server error');
+    res.status(500).send('Server error ln88');
   }
 });
 

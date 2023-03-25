@@ -94,6 +94,25 @@ header div .loginButton {
 header div.loginButton:hover {
     color: #fff;
     text-decoration: none;
+    background-color: #6e60f3;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+
+}
+
+.loginButton {
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #6e60f3;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 

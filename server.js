@@ -56,10 +56,12 @@ app.delete('/recipe/:id', (req, res) => {
   res.sendStatus(204);
 });
 
-// Start the server
+//Start the server
 app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}`);
 });
+
+
 
 // sequelize.sync({ force: false }).then(() => {
 //   app.listen(PORT, () => console.log('Now listening'));

@@ -25,8 +25,10 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/recipe', function (req, res) {
-    res.render('recipe', { title: 'RecipeHub', message: 'Hello!' });
+    res.render('recipe',);
 });
+
+
 
 
 
