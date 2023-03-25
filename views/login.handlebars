@@ -1,14 +1,14 @@
-<form action="/login" method="post">
-    <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-    </div>
-    {{body}}
-    <div>
-        <button type="submit">Log In</button>
-    </div>
-</form>
+{{ navbar}}
+<main>
+  <h1>Login to Recipe Sharing App</h1>
+  <form action="/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+  <p>Don't have an account? <a href="/signup">Sign up</a></p>
+</main>
+
+{{ footer}}
