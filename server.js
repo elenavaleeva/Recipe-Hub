@@ -24,10 +24,13 @@ app.set('view engine', 'handlebars');
 app.get('/', function (req, res) {
   res.render('home', { title: 'RecipeHub', message: 'Hello!' });
 });
+app.get('/recipe', function (req, res) {
+  res.render('recipe', { title: 'RecipeHub', message: 'Hello!' });
+});
 
 // Add more routes here for creating, reading, updating, and deleting recipes
 // Get a list of all recipes
-app.get('/recipes', (req, res) => {
+app.get('/recipe', (req, res) => {
   // Retrieve the list of recipes from a database or other storage system
   const recipes = [
     { id: 1, name: 'Spaghetti Bolognese', ingredients: ['spaghetti', 'tomato sauce', 'ground beef'], instructions: 'Cook spaghetti, brown beef, mix together.' },
