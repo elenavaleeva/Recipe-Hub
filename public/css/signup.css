@@ -1,16 +1,20 @@
 /* General styles */
 body {
-    background-color: #f3f3f3;
-    font-family: Arial, sans-serif;
-  }
+  background-image: url('../img/bruna-branco-t8hTmte4O_g-unsplash.jpg');
+  font-family: Arial, sans-serif;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
   
   /* Signup form styles */
-  .signup-form {
+  #signup-form {
     max-width: 600px;
     margin: 50px auto;
     background-color: #fff;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    background-color: rgb(245, 193, 129);
   }
   
   .signup-form h1 {

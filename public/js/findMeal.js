@@ -57,7 +57,12 @@ function getMealList() {
 function getMealRecipe(e) {
     e.preventDefault();
     if (e.target.classList.contains('recipe-btn')) {
+
         let mealItem = e.target.parentElement.parentElement;
+        console.log(mealItem);
+        console.log(mealItem.dataset.id);
+
+
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
             .then(response => response.json())
             .then(data => mealRecipeModal(data.meals));
@@ -89,6 +94,8 @@ function mealRecipeModal(meal) {
 
     mealDetailsContent.innerHTML = html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
+    // console.log(document.querySelector(".meal - details").style.display);
+    // document.querySelector('.meal-details').style.display = block;
 
 }
 

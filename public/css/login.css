@@ -1,14 +1,16 @@
 /* General styles */
 body {
-    background-color: #f3f3f3;
+    background-image: url('../img/ella-olsson-oPBjWBCcAEo-unsplash.jpg');
     font-family: Arial, sans-serif;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
   }
   
   /* Login form styles */
   .login-form {
     max-width: 400px;
     margin: 50px auto;
-    background-color: #fff;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   }

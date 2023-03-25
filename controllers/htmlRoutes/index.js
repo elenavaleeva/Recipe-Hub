@@ -28,6 +28,22 @@ router.get('/recipe', function (req, res) {
     res.render('recipe',);
 });
 
+router.get('/findMeal', function (req, res) {
+    res.render('findMeal');
+});
+
+router.get('/home', function (req, res) {
+    res.render('home');
+});
+
+router.get('/addRecipe', function (req, res) {
+    res.render('addRecipe');
+});
+
+router.get('/logout', function (req, res) {
+    req.session.destroy();
+});
+
 
 
 

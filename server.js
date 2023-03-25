@@ -5,7 +5,9 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const sequelize = require('./config/connection');
+const { Sequelize } = require('sequelize');
+const config = require('./config/connection');
+
 const SequelizeStoreConstructor = require('connect-session-sequelize')(session.Store);
 
 
@@ -20,7 +22,11 @@ const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-app.use(routes)
+app.use(routes);
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log('Now listening'));
+// });
 
 
 // Add more routes here for creating, reading, updating, and deleting recipes
@@ -63,7 +69,7 @@ app.listen(PORT, () => {
 
 
 
-// sequelize.sync({ force: false }).then(() => {
+// config.sequelize.sync({ force: false }).then(() => {
 //   app.listen(PORT, () => console.log('Now listening'));
 // });
 
