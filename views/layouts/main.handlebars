@@ -3,35 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>RecipeHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
-    <link rel="stylesheet" href="/public/css/home.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-
-    <title>RecipeHub</title>
+    <script src="/script.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Recipe Sharing App</h1>
         <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Add Recipe</a></li>
-            </ul>
-        </nav>
+            <nav class="navbar navbar-dark navbar-expand-lg bg-light navbar-fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Recipes</a></li>
+                            <li><a href="#">Add Recipe</a></li>
+                        </ul>
+                        <form class="search-form" action="/search" method="GET">
+                            <input type="text" name="q" placeholder="Search for recipes...">
+                            <button type="submit">Search</button>
+                        </form>
+                        <div class="login-buttons">
+                            {{#if isAuthenticated}}
+                            <a href="/logout">Logout</a>
+                            {{else}}
+                            <a href="/login">Login</a>
+                            <a href="/signup">Sign Up</a>
+                            {{/if}}
+                        </div>
+            </nav>
+    </header>
     </header>
     <main>
         <section>
@@ -67,169 +71,53 @@
                 <textarea id="instructions" name="instructions" required></textarea>
                 <button type="submit">Save Recipe</button>
             </form>
-</body>
-<ul>
-    <li>
-        <h3>Recipe Name</h3>
-        <img src="" alt="Recipe image">
-        <p>Description of the recipe.</p>
-        <a href="#">Read more</a>
-    </li>
-    <li>
-        <h3>Recipe Name</h3>
-        <img src="path/to/image" alt="Recipe image">
-        <p>Description of the recipe.</p>
-        <a href="#">Read more</a>
-    </li>
-    <li>
-        <h3>Recipe Name</h3>
-        <img src="path/to/image" alt="Recipe image">
-        <p>Description of the recipe.</p>
-        <a href="#">Read more</a>
-    </li>
-</ul>
-</section>
-</main>
-<footer>
-    <p>&copy; 2023 Recipe Sharing App</p>
-</footer>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-    crossorigin="anonymous"></script>
-
-</html>
-
-
-
-<h2>New Recipe</h2>
-<form method="post" action="/recipes">
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required>
-    <label for="ingredients">Ingredients:</label>
-    <textarea id="ingredients" name="ingredients" required></textarea>
-    <label for="instructions">Instructions:</label>
-    <textarea id="instructions" name="instructions" required></textarea>
-    <button type="submit">Save Recipe</button>
-</form>
-</body>
-
-</html>
-<form action="/recipes" method="post">
-    <label for="name">Name:</label>
-    <input type="text" name="name" id="name"><br>
-    <label for="ingredients">Ingredients:</label>
-    <textarea name="ingredients" id="ingredients"></textarea><br>
-    <label for="instructions">Instructions:</label>
-    <textarea name="instructions" id="instructions"></textarea><br>
-    <button type="submit">Save</button>
-</form>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('form').submit(function (event) {
-            event.preventDefault();
-            var form = $(this);
-            var data = form.serialize();
-            $.ajax({
-                url: form.attr('action'),
-                type: 'POST',
-                data: data,
-                success: function (response) {
-                    console.log(response);
-                }
-
-            });
+            <ul>
+                <li>
+                    <h3>Recipe Name</h3>
+                    <img src="" alt="Recipe image">
+                    <p>Description of the recipe.</p>
+                    <a href="#">Read more</a>
+                </li>
+                <li>
+                    <h3>Recipe Name</h3>
+                    <img src="path/to/image" alt="Recipe image">
+                    <p>Description of the recipe.</p>
+                    <a href="#">Read more</a>
+                </li>
+                <li>
+                    <h3>Recipe Name</h3>
+                    <img src="path/to/image" alt="Recipe image">
+                    <p>Description of the recipe.</p>
+                    <a href="#">Read more</a>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Recipe Sharing App</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                event.preventDefault();
+                var form = $(this);
+                var data = form.serialize();
+                $.ajax({
+                    url: form.attr('action'),
+                    type: 'POST',
+                    data: data,
+                    success: function (response) {
+                        console.log
+                        console.log(response);
+                        $('ul').append(response);
+                    }
+                })
+            })
         });
-    });
+</main >
+            {{ { body } }}
 
-    { { { body } } }
-</script>
-
-
-{{!--
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe sharing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />"
-    <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="/public/css/home.css">
-</head>
-
-<body>
-    <div class="container">
-        <div class="meal-wrapper">
-            <img src="./img/food pic.jpg">
-            <div class="meal-search">
-                <h1 class="meal-title">Find Meal for your ingredients</h1>
-                <blockquote> Real food doesn't have ingredients, real food is ingredients.<br>
-
-                </blockquote>
-                <div class="meal-search-box">
-                    <input class="search-control" type="text" placeholder="Enter an ingredient" id="search-input" />
-                    <button type="submit" class="search-btn btn" id="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="meal-result">
-                <h2 class="title">Your Search Result</h2>
-                <div class="meal-results">
-                    <div class="meal-results-item">
-                        <div id="meal">
-
-                            <div class="meal-item-">
-                                <div class="meal-img">
-                                    <img src="food.img" alt="food">
-                                </div>
-                                <div class="meal-name">
-                                    <h3 class="">potato chips</h3>
-                                    <a href="#" class="recipe-btn">Get Recipe</a>
-                                </div>
-                            </div>
-                            <div class="meal-item-">
-                                <div class="meal-img">
-                                    <img src="food.img" alt="food">
-                                </div>
-                                <div class="meal-name">
-                                    <h3 class="">potato chips</h3>
-                                    <a href="#" class="recipe-btn">Get Recipe</a>
-                                </div>
-                            </div>
-                            <div class="meal-details">
-                                <button type="button" class="btn recipe-close-btn" id="fas fa-times">
-                                    <i class="fas fa-times"></i></button>
-
-                                <div class="meal-details-content">
-                                    <h2 class="recipe-title">Meal name here</h2>
-                                    <p class="recipe-category">Category Name</p>
-                                    <h3>Instructions</h3>
-                                    <p>text goes here</p>
-                                    <p>Second text goes here</p>
-                                </div>
-
-                                <div class="recipe-meal-img">
-                                    <img src="meal-img img" alt="food">
-                                </div>
-                                <div class="recipe-link">
-                                    <a href="#" target="_blank">Watch Video</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-            <script src="script.jj"></script> --}}
-</body>
-
-</html>
+        < footer >
+            <p>&copy; 2023 Recipe Sharing App</p>
+        </footer >
