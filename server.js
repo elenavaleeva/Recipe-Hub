@@ -22,7 +22,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'RecipeHub', message: 'Hello!' });
+  res.render('home', { title: 'RecipeHub', message: 'Hello!' });
 });
 
 // Add more routes here for creating, reading, updating, and deleting recipes
