@@ -1,5 +1,6 @@
 {{ navbar}}
 <main>
+  <link rel="stylesheet" href="/public/css/login.css">
   <h1>Login to Recipe Sharing App</h1>
   <form action="/login" method="POST">
     <label for="email">Email:</label>
@@ -7,6 +8,7 @@
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
     <button type="submit">Login</button>
+    <div class="login-form" type="text"></div>
   </form>
   <p>Don't have an account? <a href="/signup">Sign up</a></p>
 </main>

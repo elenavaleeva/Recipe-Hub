@@ -17,10 +17,12 @@
     </div>
 </form> --}}
 
-<form action="#" method="POST" id="signup-form">
+<form action="#" method="POST" id="signup-form" element="signup-form">
+    <link rel="stylesheet" href="/public/css/signup.css">
     <h2>Sign up</h2>
     <label for="signup-username">Username:</label>
     <input type="text" name="signup-username" id="signup-username" required>
+    <input type="text" type="email">
 
     <label for="signup-password">Password:</label>
     <input type="password" name="signup-password" id="signup-password" required>
@@ -28,4 +30,7 @@
     <input type="submit" value="Sign up">
 
     <p class="error" id="signup-error"></p>
+
+    {{{body}}}
+
 </form>

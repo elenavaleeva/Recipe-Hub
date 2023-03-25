@@ -1,0 +1,77 @@
+/* General styles */
+body {
+    background-color: #f3f3f3;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Recipe header styles */
+  .recipe-header {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  .recipe-header h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-header img {
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  /* Recipe info styles */
+  .recipe-info {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+  
+  .recipe-info p {
+    font-size: 1.2em;
+    margin: 0;
+  }
+  
+  /* Recipe ingredients and directions styles */
+  .recipe-section {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  
+  .recipe-section h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .recipe-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .recipe-section li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+  }
+  
+  /* Recipe footer styles */
+  .recipe-footer {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+  }
+  
+  .recipe-footer a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .recipe-footer a:hover {
+    text-decoration: underline;
+  }
+  
