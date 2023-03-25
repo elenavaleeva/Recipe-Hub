@@ -12,6 +12,8 @@ const Recipe = sequelize.define('Recipe', {
   // ...
 });
 
+
+
 // Define the association between User and Recipe
 User.hasMany(Recipe, {
   foreignKey: 'user_id',

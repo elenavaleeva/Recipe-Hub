@@ -20,13 +20,8 @@ const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.use(routes)
 
-app.get('/', function (req, res) {
-  res.render('home', { title: 'RecipeHub', message: 'Hello!' });
-});
-app.get('/recipe', function (req, res) {
-  res.render('recipe', { title: 'RecipeHub', message: 'Hello!' });
-});
 
 // Add more routes here for creating, reading, updating, and deleting recipes
 // Get a list of all recipes
@@ -65,6 +60,10 @@ app.delete('/recipe/:id', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}`);
 });
+
+// sequelize.sync({ force: false }).then(() => {
+//   app.listen(PORT, () => console.log('Now listening'));
+// });
 
 // const path = require('path');
 // const express = require('express');

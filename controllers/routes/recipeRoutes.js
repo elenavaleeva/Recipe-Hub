@@ -1,7 +1,7 @@
 const express = require('express');
 const { Connection } = require('pg');
 const router = require('express').Router();
-const recipe = require('../../models');
+const Recipe = require('../../models');
 const { sequelize } = require('../../config/connection');
 const withAuth = require('../../utils/helpers');
 
@@ -9,7 +9,7 @@ const withAuth = require('../../utils/helpers');
 
 router.get('/', async (req, res) => {
   try {
-    const recipes = await recipe.findAll();
+    const recipes = await Recipe.findAll();
     res.render('home', { recipes });
   } catch (error) {
     console.error(error);
