@@ -1,3 +1,5 @@
+const { main } = require("@popperjs/core");
+
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
@@ -43,7 +45,7 @@ function getMealList() {
                 mealList.classList.add('notFound');
             }
 
-            mealList.innerHTML = html;
+            mealList.innerHTML= html
         });
 }
 
