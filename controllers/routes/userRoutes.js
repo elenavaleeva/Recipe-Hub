@@ -14,7 +14,7 @@ userRoutes.post('/signup', async (req, res) => {
       password: hashedPassword
     });
     req.session.userId = user.id;
-    res.redirect('/recipes');
+    res.redirect('/recipe');
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
@@ -30,7 +30,7 @@ userRoutes.post('/login', async (req, res) => {
       const match = await bcrypt.compare(password, user.password);
       if (match) {
         req.session.userId = user.id;
-        res.redirect('/recipes');
+        res.redirect('/recipe');
       } else {
         res.status(401).send('Invalid email or password');
       }

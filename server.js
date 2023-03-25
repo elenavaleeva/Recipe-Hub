@@ -40,14 +40,14 @@ app.get('/recipe', (req, res) => {
 });
 
 // Save a new recipe
-app.post('/recipes', (req, res) => {
+app.post('/recipe', (req, res) => {
   const { name, ingredients, instructions } = req.body;
   // Save the recipe to a database or other storage system
   res.status(201).json({ id: 1, name, ingredients, instructions });
 });
 
 // Update an existing recipe
-app.put('/recipes/:id', (req, res) => {
+app.put('/recipe/:id', (req, res) => {
   const id = req.params.id;
   const { name, ingredients, instructions } = req.body;
   // Update the recipe in a database or other storage system
@@ -55,7 +55,7 @@ app.put('/recipes/:id', (req, res) => {
 });
 
 // Delete an existing recipe
-app.delete('/recipes/:id', (req, res) => {
+app.delete('/recipe/:id', (req, res) => {
   const id = req.params.id;
   // Delete the recipe from a database or other storage system
   res.sendStatus(204);

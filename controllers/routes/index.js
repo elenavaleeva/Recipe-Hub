@@ -5,7 +5,7 @@ const homeRoute = require('./index');
 
 router.use('/user', userRoutes);
 router.use('/recipe', recipeRoutes);
-router.use('/index', homeRoute );
+router.use('/index', homeRoute);
 
 
 

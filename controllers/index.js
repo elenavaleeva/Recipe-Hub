@@ -4,7 +4,9 @@ const userRoutes = require('./routes/userRoutes');
 const recipeRoutes = require('./routes/recipeRoutes');
 
 router.use('/user', userRoutes);
-router.use('/recipes', recipeRoutes);
+router.use('/recipe', recipeRoutes);
+
+
 
 
 module.exports = router;

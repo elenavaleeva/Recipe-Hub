@@ -24,6 +24,6 @@ const seedUsers = async () => {
   console.log('Users seeded successfully');
 };
 
-seedUsers();
+// seedUsers();
 
 module.exports = seedUsers;

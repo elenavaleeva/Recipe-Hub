@@ -1,5 +1,7 @@
+{{!--
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> --}}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="/public/css/home.css">
     <title>RecipeHub</title>
 </head>
+
 <body>
     <header>
         <nav>
@@ -21,11 +24,16 @@
             </form>
             <div class="login-buttons">
                 {{#if isAuthenticated}}
-                    <a href="/logout">Logout</a>
+                <a href="/logout">Logout</a>
                 {{else}}
-                    <a href="/login">Login</a>
-                    <a href="/signup">Sign Up</a>
+                <a href="/login">Login</a>
+                <a href="/signup">Sign Up</a>
                 {{/if}}
             </div>
         </nav>
     </header>
+</body>
+
+{{!--
+
+</html> --}}

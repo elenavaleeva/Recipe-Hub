@@ -1,11 +1,11 @@
 // Define a Handlebars helper to format dates
 module.exports = {
-  formatDate: function(date, format) {
+  formatDate: function (date, format) {
     return moment(date).format(format);
   },
 
   // Define a Handlebars helper to truncate text
-  truncate: function(str, len) {
+  truncate: function (str, len) {
     if (str.length > len && str.length > 0) {
       let new_str = str + ' ';
       new_str = str.substr(0, len);
@@ -17,7 +17,7 @@ module.exports = {
   },
 
   // Define a Handlebars helper to create a select menu of categories
-  select: function(selected, options) {
+  select: function (selected, options) {
     return options
       .fn(this)
       .replace(
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   // Define a Handlebars helper to check if a user is logged in
-  ifUser: function(user, options) {
+  ifUser: function (user, options) {
     if (user) {
       return options.fn(this);
     } else {
@@ -39,3 +39,5 @@ module.exports = {
     }
   },
 };
+
+

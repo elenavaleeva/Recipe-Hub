@@ -1,5 +1,6 @@
+{{!--
 <!DOCTYPE html>
-<html>
+<html> --}}
 
 <head>
   <meta charset="utf-8">
@@ -14,8 +15,8 @@
       <nav class="nav">
         <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="/recipes">Recipes</a></li>
-          <li><a href="/recipes/new">New Recipe</a></li>
+          <li><a href="/recipe">Recipes</a></li>
+          <li><a href="/recipe/new">New Recipe</a></li>
         </ul>
       </nav>
     </div>
@@ -41,7 +42,7 @@
 
 <p>Our recipe sharing app lets you discover and share your favorite recipes with others.</p>
 
-<p><a href="/recipes" class="btn">View Recipes</a></p>
+<p><a href="/recipe" class="btn">View Recipes</a></p>
 
 <!-- Recipe List Template -->
 
@@ -51,7 +52,7 @@
 <ul class="recipe-list">
   {{#each recipes}}
   <li class="recipe-card">
-    <a href="/recipes/{{id}}">
+    <a href="/recipe/{{id}}">
       <img src="{{image}}" alt="{{title}}">
       <div class="details">
         <h3 class="title">{{title}}</h3>
@@ -70,7 +71,7 @@
 
 <h2>New Recipe</h2>
 
-<form class="recipe-form" method="post" action="/recipes">
+<form class="recipe-form" method="post" action="/recipe">
   <label for="title">Title</label>
   <input type="text" id="title" name="title" required>
 
@@ -126,3 +127,8 @@
     </div>
   </div>
 </div>
+</body>
+
+{{!--
+
+</html> --}}
