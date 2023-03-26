@@ -4,13 +4,14 @@ const router = require('express').Router();
 const Recipe = require('../../models');
 const { sequelize } = require('../../config/connection');
 const withAuth = require('../../utils/helpers');
+const Sequelize = require('sequelize');
 
 // Get all recipes
 
 router.get('/', async (req, res) => {
   try {
     // const recipes = await Recipe.findAll();
-    res.render('home',);// { recipes });
+    res.render('recipe',);// { recipes });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error home ln 16');

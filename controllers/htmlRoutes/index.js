@@ -28,7 +28,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/recipe', function (req, res) {
+router.get('/recipe', (req, res) => {
     res.render('recipe');
 });
 
@@ -44,9 +44,6 @@ router.get('/addRecipe', function (req, res) {
 router.get('/logout', function (req, res) {
     req.session.destroy();
 });
-
-
-
 
 
 
