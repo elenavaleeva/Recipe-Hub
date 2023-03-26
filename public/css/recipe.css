@@ -1,8 +1,11 @@
 /* General styles */
 body {
-    background-color: #f3f3f3;
-    font-family: Arial, sans-serif;
-  }
+  background-image: url('../img/daniela-crucez-1115tTZofMs-unsplash.jpg');
+  font-family: Arial, sans-serif;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
   
   /* Recipe header styles */
   .recipe-header {

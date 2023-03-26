@@ -18,9 +18,9 @@ searchBtn.addEventListener('click', getMealList);
 
 mealList.addEventListener('click', getMealRecipe);
 
-recipeCloseBtn.addEventListener('click', () => {
-    mealDetailsContent.parentElement.classList.remove('showRecipe');
-});
+// recipeCloseBtn.addEventListener('click', () => {
+//     mealDetailsContent.parentElement.classList.remove('showRecipe');
+// });
 
 
 function getMealList() {
@@ -38,7 +38,7 @@ function getMealList() {
                     </div>
                     <div class="meal-name">
                         <h3 class="">${meal.strMeal}</h3>
-                        <a href="#" class="recipe-btn">Get Recipe</a>
+                        <a href="${meal.showRecipe}" class="recipe-btn">Get Recipe</a>
                     </div>
                 </div>
                 `;

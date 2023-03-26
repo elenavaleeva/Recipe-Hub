@@ -33,10 +33,10 @@
                             <li><a href="addRecipe">Add Recipe</a></li>
                             <li><a href="findMeal">Recipe by Ingredient</a></li>
                         </ul>
-                        <form class="search-form" action="/search" method="GET">
+                        {{!-- <form class="search-form" action="/search" method="GET">
                             <input type="text" name="q" placeholder="Search for recipes...">
                             <button type="submit">Search</button>
-                        </form>
+                        </form> --}}
                         <div class="login-buttons">
                             {{#if isAuthenticated}}
                             <a href="/logout">Logout</a>
@@ -141,7 +141,7 @@
     {{!--
     <script src="/script.js"></script> --}}
     <script src="/js/index.js"></script>
-    <script src="./main"></script>
+
 
     </footer>
 

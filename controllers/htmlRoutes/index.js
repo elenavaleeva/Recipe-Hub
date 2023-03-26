@@ -20,21 +20,22 @@ router.get('/login', (req, res) => {
     // return;
 });
 
+router.get('/home', function (req, res) {
+    res.render('home');
+});
+
 router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
 router.get('/recipe', function (req, res) {
-    res.render('recipe',);
+    res.render('recipe');
 });
 
 router.get('/findMeal', function (req, res) {
     res.render('findMeal');
 });
 
-router.get('/home', function (req, res) {
-    res.render('home');
-});
 
 router.get('/addRecipe', function (req, res) {
     res.render('addRecipe');
