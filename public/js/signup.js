@@ -1,11 +1,12 @@
-const signupForm = document.querySelector('.signup-form');
+const signupForm = document.querySelector('#signup-form');
+
 async function handleSignup(event) {
   console.log('signup button');
   event.preventDefault();
 
-  const userNameValue = document.querySelector('#username-signup').value.trim();
-  const passwordValue = document.querySelector('#password-signup').value.trim();
-  const emailValue = document.querySelector('#email-signup').value.trim();
+  const userNameValue = document.querySelector('#signup-username').value.trim();
+  const passwordValue = document.querySelector('#signup-password').value.trim();
+  const emailValue = document.querySelector('#signup-email').value.trim();
 
   const newUser = {
     username: userNameValue,
@@ -23,9 +24,9 @@ async function handleSignup(event) {
 
   if (response.ok) {
     console.log('IT WORKED!');
-    document.location.replace('/dashboard');
+    document.location.replace('/home');
   } else {
-    console.log('Dan, you screwed it up again');
+    console.log('It wasnt me');
   }
 
   signupForm.reset();
