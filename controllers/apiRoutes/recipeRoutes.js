@@ -1,10 +1,10 @@
 const express = require('express');
 const { Connection } = require('pg');
 const router = require('express').Router();
-const Recipe = require('../../models');
-const { sequelize } = require('../../config/connection');
+const { Recipe } = require('../../models');
+const { Sequelize } = require('../../config/connection');
 const withAuth = require('../../utils/helpers');
-const Sequelize = require('sequelize');
+
 
 // Get all recipes
 
