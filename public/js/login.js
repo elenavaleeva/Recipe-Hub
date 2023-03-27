@@ -1,16 +1,35 @@
+const loginForm = document.querySelector('#login-form');
 
 
-const loginForm = document.getElementById('login-form');
-loginForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    console.log(e.target);
-    console.log(e.target.email.value);
-    console.log(e.target.password.value);
-    console.log(e.target.rememberMe.checked);
+async function handleLogin(event) {
+  console.log('login button?');
+  event.preventDefault();
 
-    if (e.target.email.value === 'john.doe@example.com' && e.target.password.value === '123456') {
-        console.log('login successful');
-        window.location.href = 'index.html';
-        return;
-    }
-});
+  const emailValue = document.querySelector('#email').value.trim();
+  const passwordValue = document.querySelector('#password').value.trim();
+
+  const loginUser = {
+    email: emailValue,
+    password: passwordValue,
+  };
+
+  const response = await fetch('/api/users/login', {
+    body: JSON.stringify(loginUser),
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    console.log('IT WORKED!');
+    document.location.replace('/home');
+  } else {
+    console.log('It wasnt me');
+  }
+
+  loginForm.reset();
+}
+
+
+loginForm.addEventListener('submit', handleLogin);

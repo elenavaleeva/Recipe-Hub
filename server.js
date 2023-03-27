@@ -29,39 +29,6 @@ app.use(routes);
 // });
 
 
-// Add more routes here for creating, reading, updating, and deleting recipes
-// Get a list of all recipes
-app.get('/recipe', (req, res) => {
-  // Retrieve the list of recipes from a database or other storage system
-  const recipes = [
-    { id: 1, name: 'Spaghetti Bolognese', ingredients: ['spaghetti', 'tomato sauce', 'ground beef'], instructions: 'Cook spaghetti, brown beef, mix together.' },
-    { id: 2, name: 'Chicken Curry', ingredients: ['chicken', 'curry powder', 'coconut milk'], instructions: 'Cook chicken, mix with curry and coconut milk.' },
-  ];
-  res.json(recipes);
-});
-
-// Save a new recipe
-app.post('/recipe', (req, res) => {
-  const { name, ingredients, instructions } = req.body;
-  // Save the recipe to a database or other storage system
-  res.status(201).json({ id: 1, name, ingredients, instructions });
-});
-
-// Update an existing recipe
-app.put('/recipe/:id', (req, res) => {
-  const id = req.params.id;
-  const { name, ingredients, instructions } = req.body;
-  // Update the recipe in a database or other storage system
-  res.json({ id, name, ingredients, instructions });
-});
-
-// Delete an existing recipe
-app.delete('/recipe/:id', (req, res) => {
-  const id = req.params.id;
-  // Delete the recipe from a database or other storage system
-  res.sendStatus(204);
-});
-
 //Start the server
 app.listen(PORT, () => {
   console.log(`Now listening on port ${PORT}`);

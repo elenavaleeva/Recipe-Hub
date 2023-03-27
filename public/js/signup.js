@@ -1,80 +1,34 @@
-// const source = document.getElementById('signup-form').innerHTML;
-// const template = Handlebars.compile(source);
+const signupForm = document.querySelector('.signup-form');
+async function handleSignup(event) {
+  console.log('signup button');
+  event.preventDefault();
 
+  const userNameValue = document.querySelector('#username-signup').value.trim();
+  const passwordValue = document.querySelector('#password-signup').value.trim();
+  const emailValue = document.querySelector('#email-signup').value.trim();
 
-// const context = {
-//     name: 'John Doe',
-//     email: 'john.doe@example.com'
-// };
-// const html = template(context);
-// document.getElementById('signup-form-container').innerHTML = html;
+  const newUser = {
+    username: userNameValue,
+    email: emailValue,
+    password: passwordValue,
+  };
 
-// const signupForm = document.getElementById('signup-form');
-// signupForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const formData = new FormData(signupForm);
-//     const email = formData.get('email');
-//     const password = formData.get('password');
-//     const name = formData.get('name');
-//     if (!email || !password || !name) {
-//         return;
-//     }
-// });
+  const response = await fetch('/api/users/signup', {
+    body: JSON.stringify(newUser),
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
 
-// const logout = async () => {
-//     const response = await fetch('../signup', {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//     });
-  
-//     if (response.ok) {
-//       document.location.replace('/login');
-//     } else {
-//       alert(response.statusText);
-//     }
-//   };
-  
-//   document.querySelector('#logout').addEventListener('click', logout);
-  
-const form = document.getElementById("signup-form");
-const usernameInput = document.getElementById("signup-username");
-const passwordInput = document.getElementById("signup-password");
-const errorLabel = document.getElementById("signup-error");
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); // prevent form submission
-
-  const username = usernameInput.value.trim();
-  const password = passwordInput.value.trim();
-
-  // perform input validation
-  if (!username || !password) {
-    errorLabel.textContent = "Please enter both username and password.";
-    return;
+  if (response.ok) {
+    console.log('IT WORKED!');
+    document.location.replace('/dashboard');
+  } else {
+    console.log('Dan, you screwed it up again');
   }
 
-  // perform server-side validation and submit form
-  // (you can replace this with your own implementation)
-  fetch("/signup", {
-    method: "POST",
-    body: JSON.stringify({ username, password }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.error) {
-        errorLabel.textContent = data.error;
-      } else {
-        alert("Sign up successful!");
-        form.reset();
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      errorLabel.textContent = "An error occurred, please try again later.";
-    });
-});
+  signupForm.reset();
+}
 
-
+signupForm.addEventListener('submit', handleSignup);
