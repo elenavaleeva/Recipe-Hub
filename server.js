@@ -5,9 +5,9 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
-const { Sequelize } = require('sequelize');
-const config = require('./config/connection');
-
+// const { Sequelize } = require('sequelize');
+const sequelize = require('./config/connection');
+// console.log(config.sequelize);
 const SequelizeStoreConstructor = require('connect-session-sequelize')(session.Store);
 
 
@@ -30,15 +30,15 @@ app.use(routes);
 
 
 //Start the server
-app.listen(PORT, () => {
-  console.log(`Now listening on port ${PORT}`);
-});
-
-
-
-// config.sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log('Now listening'));
+// app.listen(PORT, () => {
+//   console.log(`Now listening on port ${PORT}`);
 // });
+
+
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log('Now listening'));
+});
 
 // const path = require('path');
 // const express = require('express');
