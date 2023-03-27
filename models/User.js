@@ -1,8 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
-const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-const { Hooks } = require('sequelize/types/hooks');
 
 
 class User extends Model {
@@ -25,16 +23,16 @@ class User extends Model {
 User.init(
   {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true
     },
     name: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     email: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
@@ -42,14 +40,14 @@ User.init(
       }
     },
     password: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     }
   },
 
   // Hash the password before saving
   {
-    Hooks: {
+    hooks: {
       beforeCreate: async (newUser) => {
         newUser.password = await bcrypt.hash(newUser.password, 10);
       },
@@ -67,11 +65,5 @@ User.init(
 );
 
 
-
-
-
-
-
-
-module.exports = { User };
+module.exports = User;
 

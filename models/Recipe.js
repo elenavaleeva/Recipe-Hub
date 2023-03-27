@@ -1,6 +1,6 @@
-const Sequelize = require('sequelize');
-const { Model, DataType } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
 class Recipe extends Model {
   checkIngredient(ingredient) {
     return this.ingredients.indexOf(ingredient) !== -1;
@@ -12,34 +12,42 @@ class Recipe extends Model {
 Recipe.init(
   {
     id: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
       allowNull: false
     },
     title: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
     description: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     ingredients: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     directions: {
-      type: Sequelize.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     image: {
-      type: Sequelize.STRING,
+      type: DataTypes.STRING,
       allowNull: true
     }
-  });
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'recipe',
+  }
+);
 
 
 
+module.exports = Recipe;
 
-module.exports =  {Recipe};

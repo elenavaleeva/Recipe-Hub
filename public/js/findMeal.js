@@ -3,6 +3,8 @@ const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 
+const showButton = document.getElementById('showRecipe');
+
 // const showRecipe = document.getElementById('showButton');
 // const hiddenElement = document.getElementById('hiddenElement');
 
@@ -68,7 +70,17 @@ function getMealRecipe(e) {
             .then(data => mealRecipeModal(data.meals));
 
     }
+
 }
+router.get('/', async (req, res) => {
+    try {
+        const recipes = await Recipe.findAll();
+        res.render('/showRecipe',);// { recipes });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error home ln 16');
+    }
+});
 
 
 
