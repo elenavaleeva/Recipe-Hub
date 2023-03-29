@@ -1,15 +1,18 @@
 const { main } = require("@popperjs/core");
-
 const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
 const recipeBtn = document.querySelector('.recipe-btn');
 
-const mealItem = document.querySelectorAll('.meal-item');
+ const mealItem = document.querySelectorAll('.meal-item');
 
 
 searchBtn.addEventListener('click', getMealList);
+
+mealDetailsContent.addEventListener('click', () => {
+});
+
 
 mealList.addEventListener('click', getMealRecipe);
 
@@ -49,22 +52,23 @@ function getMealList() {
         });
 }
 
-function getMealRecipe(e) {
-    e.preventDefault();
-    if (e.target.classList.contains('recipe-btn')) {
-        let mealItem = e.target.parentElement.parentElement;
-        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+ function getMealRecipe(e) {
+     e.preventDefault();
+     if (e.target.classList.contains('recipe-btn')) {
+         let mealItem = e.target.parentElement.parentElement;
+         mealDetailsContent.parentElement.classList.remove('showRecipe');
+         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
             .then(response => response.json())
             .then(data => mealRecipeModal(data.meals));
 
-    }
+     }
 
-}
+ }
 
 
 
 function mealRecipeModal(meal) {
-
+    console.log(meal);
     meal = meal[0];
     let html = `
      <h2 class="recipe-title">${meal.strMeal}</h2>
@@ -86,6 +90,8 @@ function mealRecipeModal(meal) {
     mealDetailsContent.parentElement.classList.add('showRecipe');
 
 }
+
+
 
 
 

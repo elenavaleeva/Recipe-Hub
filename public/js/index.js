@@ -1,5 +1,5 @@
 // Import Sequelize and define a connection to the database
-const Sequelize = require('sequelize');
+const Sequelize= require('sequelize');
 const sequelize = require('../config/connection');
 
 // Define the User model

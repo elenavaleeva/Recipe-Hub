@@ -8,7 +8,7 @@ const helpers = require('./utils/helpers');
 // const { Sequelize } = require('sequelize');
 const sequelize = require('./config/connection');
 // console.log(config.sequelize);
-const SequelizeStoreConstructor = require('connect-session-sequelize')(session.Store);
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 
 const app = express();
@@ -17,6 +17,23 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static(path.join(__dirname, 'public')));
+
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store:new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
 
 const hbs = exphbs.create({ helpers });
 

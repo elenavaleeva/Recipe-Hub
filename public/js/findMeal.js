@@ -67,7 +67,7 @@ function getMealRecipe(e) {
 
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
             .then(response => response.json())
-            .then(data => mealRecipeModal(data.meals));
+            .then(data => mealRecipeModal(data.meals, mealItem));
 
     }
 
@@ -85,7 +85,7 @@ router.get('/', async (req, res) => {
 
 
 
-function mealRecipeModal(meal) {
+function mealRecipeModal(meal,parent) {
 
     meal = meal[0];
     let html = `
@@ -96,15 +96,10 @@ function mealRecipeModal(meal) {
     <p>${meal.strInstructions}</p>
 </div>
 
-<div class="recipe-meal-img">
-    <img src="${meal.strMealThumb}" alt="">
-</div>
-<div class="recipe-link">
-    <a href="${meal.strYoutube}" target="_blank">Watch Video</a>
-</div>
+
 `;
 
-    mealDetailsContent.innerHTML = html;
+    parent.innerHTML += html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
     // console.log(document.querySelector(".meal - details").style.display);
     // document.querySelector('.meal-details').style.display = block;

@@ -9,18 +9,19 @@ async function handleSignup(event) {
   const emailValue = document.querySelector('#signup-email').value.trim();
 
   const newUser = {
-    username: userNameValue,
+    name: userNameValue,
     email: emailValue,
     password: passwordValue,
   };
 
-  const response = await fetch('/api/users/signup', {
+  const response = await fetch('/api/user/signup', {
     body: JSON.stringify(newUser),
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
   });
+  console.log(response);
 
   if (response.ok) {
     console.log('IT WORKED!');

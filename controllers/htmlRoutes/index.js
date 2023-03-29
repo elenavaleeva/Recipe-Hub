@@ -5,7 +5,7 @@ router.get('/', function (req, res) {
     res.render('home', { title: 'RecipeHub', message: 'Hello!' });
 });
 
-router.get('/api/user/login', (req, res) => {
+router.get('/login', (req, res) => {
     // if (req.session.logged_in) {
     //     res.redirect('/');
     //     return;
