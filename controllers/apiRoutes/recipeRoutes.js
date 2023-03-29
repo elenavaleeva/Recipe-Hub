@@ -6,6 +6,7 @@ const { Sequelize } = require('../../config/connection');
 const withAuth = require('../../utils/helpers');
 
 
+
 // Get all recipes
 
 router.get('/', async (req, res) => {
