@@ -12,8 +12,8 @@ async function handleLogin(event) {
   //    password: passwordValue,
   //  };
 
-  const response = await fetch('/api/users/login', {
-    body: JSON.stringify(loggedUser),
+  const response = await fetch('/api/user/login', {
+    // body: JSON.stringify(loggedUser),
     method: 'POST',
     headers: {
       'content-type': 'application/json',

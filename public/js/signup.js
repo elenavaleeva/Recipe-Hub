@@ -1,5 +1,6 @@
 const signupForm = document.querySelector('#signup-form');
 
+
 async function handleSignup(event) {
   console.log('signup button');
   event.preventDefault();
@@ -25,7 +26,7 @@ async function handleSignup(event) {
 
   if (response.ok) {
     console.log('IT WORKED!');
-    document.location.replace('/home');
+    document.location.replace(`/home`);
   } else {
     console.log('It wasnt me');
   }
