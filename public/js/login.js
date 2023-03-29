@@ -12,26 +12,26 @@ async function handleLogin(event) {
   //    password: passwordValue,
   //  };
 
-   const response = await fetch('/api/users/login', {
+  const response = await fetch('/api/users/login', {
     body: JSON.stringify(loggedUser),
-     method: 'POST',
-     headers: {
-       'content-type': 'application/json',
-     },
-     body: JSON.stringify({ email: emailValue, password: passwordValue }),
-   });
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({ email: emailValue, password: passwordValue }),
+  });
 
-   if (response.ok) {
+  if (response.ok) {
     console.log('IT WORKED!');
-     document.location.replace('/home');
-   } else {
-     console.log('It wasnt me');
-   }
+    document.location.replace('/home');
+  } else {
+    console.log('It wasnt me');
+  }
 
-   loginForm.reset();
- }
+  loginForm.reset();
+}
 
 
- loginForm.addEventListener('submit', handleLogin);
+loginForm.addEventListener('submit', handleLogin);
 
 

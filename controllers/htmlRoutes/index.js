@@ -41,9 +41,20 @@ router.get('/addRecipe', function (req, res) {
     res.render('addRecipe');
 });
 
+
+router.get('/sharing', function (req, res) {
+    res.redirect('recipe');
+});
+
+
 router.get('/logout', function (req, res) {
     req.session.destroy();
+    res.redirect('login');
 });
+
+router.get('/facebook', (req, res) => {
+    res.redirect('https://www.facebook.com/login');
+})
 
 
 
