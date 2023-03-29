@@ -37,13 +37,21 @@
                             <button type="submit">Search</button>
                         </form> --}}
                         <div class="login-buttons">
+                        {{#if isAuthenticated}}
+                        <a href="/logout" class="btn btn-primary">Logout</a>
+                        {{else}}
+                        <a href="/login" class="btn btn-primary">Login</a>
+                        <a href="/signup" class="btn btn-secondary">Sign Up</a>
+                        {{/if}}
+                    </div>
+                        {{!-- <div class="login-buttons">
                             {{#if isAuthenticated}}
                             <a href="/logout">Logout</a>
                             {{else}}
                             <a href="/login">Login</a>
                             <a href="/signup">Sign Up</a>
                             {{/if}}
-                        </div>
+                        </div> --}}
             </nav>
     </header>
     <main>
@@ -140,6 +148,7 @@
     {{!--
     <script src="/script.js"></script> --}}
     <script src="/js/script.js"></script>
+    <script src="/js/logout.js"></script>
 
 
     </footer>
