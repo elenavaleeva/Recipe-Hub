@@ -57,14 +57,10 @@ const whatsAppBtn = document.querySelector(".whatsApp-btn");
 const pinterestBtn = document.querySelector(".pinterest-btn");
 
 function init() {
-    // const pinterestImg = document.querySelector(".pinterest-img");
 
-    // let postUrl = encodeURL(window.location.href);
-    // let postTitle = encodeURL("Hi everyone, please check out this awesome post!");
-    // let postImg = encodeURL("pinterestImg.src");
 
     facebookBtn.setAttribute(
-        href =
+        "href",
         ` https://www.facebook.com/login/`
     );
 
@@ -80,7 +76,7 @@ function init() {
 
     whatsAppBtn.setAttribute(
         "href",
-        ` https://wa.me/text=[post-title] [post-url]`
+        ` https://wa.me/text=[post-title]=[post-url]`
     );
 
     pinterestBtn.setAttribute(
