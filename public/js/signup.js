@@ -26,7 +26,7 @@ async function handleSignup(event) {
 
   if (response.ok) {
     console.log('IT WORKED!');
-    document.location.replace(`/home`);
+    document.location.replace(`/login`);
   } else {
     console.log('It wasnt me');
   }

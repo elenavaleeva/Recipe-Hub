@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="<link rel=" stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
         integrity="sha512-9BwLAVqqt6oFdXohPLuNHxhx36BVj5uGSGmizkmGkgl3uMSgNalKc/smum+GJU/TTP0jy0+ruwC3xNAk3F759A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />">
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>">
+
 
 </head>
 
@@ -25,7 +26,7 @@
         <nav>
             <nav class="navbar navbar-dark navbar-expand-lg bg-light navbar-fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">
+                    <a class="navbar-brand">
                         <ul>
                             <li><a href="home">Home</a></li>
                             <li><a href="recipe">Recipes</a></li>
@@ -37,8 +38,9 @@
                         </form> --}}
                         <div class="login-buttons">
                             {{#if isAuthenticated}}
-                            <a href="/logout" class="btn btn-primary">Logout</a>
+                            {{!-- <a href="/logout" class="btn btn-primary">Logout</a> --}}
                             {{else}}
+                            <a href="/logout" class="btn btn-primary">Logout</a>
                             <a href="/login" class="btn btn-primary">Login</a>
                             <a href="/signup" class="btn btn-secondary">Sign Up</a>
                             {{/if}}
@@ -55,7 +57,8 @@
     </header>
     <main>
 
-        {{{body}}}
+{{{body}}}
+
         {{!-- {{{body}}}
         <section class="container my-5">
             <h2 class="text-left mb-4">Featured Recipe</h2>

@@ -10,6 +10,11 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    font-size:xx-large;
+    font-style: oblique;
+    font-family: monospace;
+    text-decoration-style: solid;
+    text-decoration-color: black;
 
 
 }
@@ -121,19 +126,13 @@ header div.loginButton:hover {
 
 
 
-
-
-
-
-
-
-
-
 footer {
     padding: 30px;
     clear: both;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align:  center;
+    bottom:initial;
+
 
 }
 footer h2 {

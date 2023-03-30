@@ -5,6 +5,8 @@ const exphbs = require('express-handlebars');
 const bcrypt = require('bcrypt');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const fs = require('fs');
+
 // const { Sequelize } = require('sequelize');
 const sequelize = require('./config/connection');
 // console.log(config.sequelize);
