@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url("../img/ellie-ellien-wg2xU_UNiVc-unsplash.jpg");
+    background-image: url("../img/Patrick.gif");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -14,7 +14,7 @@ body {
     font-style: oblique;
     font-family: monospace;
     text-decoration-style: solid;
-    text-decoration-color: black;
+
 
 
 }
@@ -50,6 +50,7 @@ header div ul {
 
 header div ul li {
     display: inline-block;
+    block-size: 20%;
     margin-left: 25px;
 }
 
