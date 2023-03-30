@@ -7,9 +7,9 @@
 body {
     background-image: url("../img/Patrick.gif");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment:inherit;
     font-size:xx-large;
     font-style: oblique;
     font-family: monospace;
