@@ -7,142 +7,144 @@ router.get('/', (req, res) => {
   res.render('recipe', { recipes }); // Pass the data to the home handlebars template
 });
 
+
+
+
+// module.exports = router;
+
+// const express = require('express');
+const { Connection } = require('pg');
+// const router = require('express').Router();
+const { Recipe } = require('../../models');
+const { Sequelize } = require('../../config/connection');
+const withAuth = require('../../utils/helpers');
+
+
+
+// // Get all recipes
+
 router.get('/', async (req, res) => {
   try {
-    const recipes = await new Recipe.findAll();
-    res.render('/recipe',);// { recipes });
+    const recipe = await Recipe.findAll();
+    res.render('recipe',);// { recipes });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error home ln 16');
   }
 });
 
+// // Get a single recipe by ID
 
-
-
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
-    const recipeData = await Recipe.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const recipe = await recipe.findByPk(req.params.id);
+    if (recipe) {
+      res.render('recipe', { recipe });
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error for ln32');
+  }
+});
 
-    // Serialize data so the template can read it
-    const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
+// // Create a new recipe
 
-    // Pass serialized data and session flag into template
-    res.render('recipe', {
-      recipes,
-      logged_in: req.session.logged_in
+router.post('/', async (req, res) => {
+  try {
+    const newRecipe = await recipe.create({
+      ...req.body,
+      user_id: req.session.user_id,
     });
-  } catch (err) {
-    res.status(500).json(err);
+    res.status(200).json(newRecipe);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error ln 47');
   }
 });
 
 
+// // Update a recipe
+
+router.put('/:id', async (req, res) => {
+  try {
+    const recipe = await recipe.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error ln 68');
+  }
+});
+
+// // Delete a recipe
+
+router.delete('/:id', async (req, res) => {
+  try {
+    const recipe = await recipe.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (recipe) {
+      res.status(200).json(recipe);
+    } else {
+      res.status(404).send('Recipe not found');
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error ln88');
+  }
+});
 
 module.exports = router;
 
-// const express = require('express');
-// const { Connection } = require('pg');
-// const router = require('express').Router();
-// const { Recipe } = require('../../models');
-// const { Sequelize } = require('../../config/connection');
-// const withAuth = require('../../utils/helpers');
-
-
-
-// // Get all recipes
-
 // router.get('/', async (req, res) => {
 //   try {
-//     // const recipes = await Recipe.findAll();
-//     res.render('recipe',);// { recipes });
+//     const recipes = await new Recipe.findAll();
+//     res.render('/recipe',);// { recipes });
 //   } catch (error) {
 //     console.error(error);
 //     res.status(500).send('Server error home ln 16');
 //   }
 // });
 
-// // Get a single recipe by ID
 
-// router.get('/:id', async (req, res) => {
+
+
+// router.get('/', async (req, res) => {
 //   try {
-//     // const recipe = await recipe.findByPk(req.params.id);
-//     if (recipe) {
-//       res.render('recipe', { recipe });
-//     } else {
-//       res.status(404).send('Recipe not found');
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error for ln32');
-//   }
-// });
-
-// // Create a new recipe
-
-// router.post('/', async (req, res) => {
-//   try {
-//     const newRecipe = await recipe.create({
-//       ...req.body,
-//       user_id: req.session.user_id,
+//     // Get all projects and JOIN with user data
+//     const recipeData = await Recipe.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
 //     });
-//     res.status(200).json(newRecipe);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error ln 47');
-//   }
-// });
 
+//     // Serialize data so the template can read it
+//     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
 
-// // Update a recipe
-
-// router.put('/:id', async (req, res) => {
-//   try {
-//     const recipe = await recipe.update(req.body, {
-//       where: {
-//         id: req.params.id,
-//       },
+//     // Pass serialized data and session flag into template
+//     res.render('recipe', {
+//       recipes,
+//       logged_in: req.session.logged_in
 //     });
-//     if (recipe) {
-//       res.status(200).json(recipe);
-//     } else {
-//       res.status(404).send('Recipe not found');
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error ln 68');
+//   } catch (err) {
+//     res.status(500).json(err);
 //   }
 // });
 
-// // Delete a recipe
-
-// router.delete('/:id', async (req, res) => {
-//   try {
-//     const recipe = await recipe.destroy({
-//       where: {
-//         id: req.params.id,
-//       },
-//     });
-//     if (recipe) {
-//       res.status(200).json(recipe);
-//     } else {
-//       res.status(404).send('Recipe not found');
-//     }
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).send('Server error ln88');
-//   }
-// });
-
-// module.exports = router;
 
 
 
