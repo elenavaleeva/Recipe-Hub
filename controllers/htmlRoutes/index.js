@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const Recipe = require('../../models/Recipe');
 // const authChecker = require('../../utils/auth.js');
 
 router.get('/', function (req, res) {
@@ -32,6 +33,18 @@ router.get('/recipe', (req, res) => {
     res.render('recipe');
 });
 
+// router.get('/', async (req, res) => {
+//     try {
+//         const recipes = await Recipe.findAll();
+//         console.log(recipes);
+//         res.render('recipe', { recipes }); // Pass the data to the home handlebars template
+//     }
+//     catch (err) {
+//         console.log(err);
+//         res.status(500).json(err);
+//     }
+// });
+
 router.get('/findMeal', function (req, res) {
     res.render('findMeal');
 });
@@ -49,3 +62,6 @@ router.get('/logout', function (req, res) {
 
 
 module.exports = router;
+
+
+

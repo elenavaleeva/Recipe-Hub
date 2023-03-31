@@ -26,4 +26,4 @@ const seedUsers = async () => {
 
 // seedUsers();
 
-module.exports = seedUsers;
+module.exports = userData;
