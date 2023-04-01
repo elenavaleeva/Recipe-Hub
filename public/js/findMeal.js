@@ -2,15 +2,11 @@ const searchBtn = document.getElementById('search-btn');
 const mealList = document.getElementById('meal');
 const mealDetailsContent = document.querySelector('.meal-details-content');
 const recipeCloseBtn = document.getElementById('recipe-close-btn');
+const mealDetails = document.querySelector('.meal-details')
 
 const showButton = document.getElementById('showRecipe');
 
-// const showRecipe = document.getElementById('showButton');
-// const hiddenElement = document.getElementById('hiddenElement');
 
-// showButton.addEventListener('click', function () {
-//     hiddenElement.style.display = 'block';
-// });
 
 const mealItem = document.querySelectorAll('.meal-item');
 
@@ -20,9 +16,9 @@ searchBtn.addEventListener('click', getMealList);
 
 mealList.addEventListener('click', getMealRecipe);
 
-// recipeCloseBtn.addEventListener('click', () => {
-//     mealDetailsContent.parentElement.classList.remove('showRecipe');
-// });
+mealList.addEventListener('click', saveRecipe);
+
+
 
 
 function getMealList() {
@@ -40,7 +36,7 @@ function getMealList() {
                     </div>
                     <div class="meal-name">
                         <h3 class="">${meal.strMeal}</h3>
-                        <a href="${meal.showRecipe}" class="recipe-btn">Get Recipe</a>
+                        <a href="/" class="recipe-btn">Get Recipe</a>
                     </div>
                 </div>
                 `;
@@ -59,6 +55,7 @@ function getMealList() {
 function getMealRecipe(e) {
     e.preventDefault();
     if (e.target.classList.contains('recipe-btn')) {
+        console.log("From the recipe button in findmeal/js")
 
         let mealItem = e.target.parentElement.parentElement;
         console.log(mealItem);
@@ -93,16 +90,47 @@ function mealRecipeModal(meal,parent) {
     <p class="recipe-category">${meal.strCategory}</p>
     <div class="recipe-instruct">
     <h3>Instructions</h3>
-    <p>${meal.strInstructions}</p>
+    <p id="directions">${meal.strInstructions}</p>
+    <a href="/" class="save-btn">Save Recipe</a>
 </div>
 
 
 `;
 
-    parent.innerHTML += html;
+parent.innerHTML += html;
     mealDetailsContent.parentElement.classList.add('showRecipe');
     // console.log(document.querySelector(".meal - details").style.display);
     // document.querySelector('.meal-details').style.display = block;
 
 }
 
+async function saveRecipe(e) {
+    e.preventDefault();
+    if (e.target.classList.contains('save-btn')) {
+        console.log("From the save button in findmeal.js");
+        // title
+        const titleText = document.querySelector('.recipe-title').textContent;
+        // ingredients
+        const ingredientsText = document.querySelector('.recipe-category').textContent;
+        // direction
+        const directionsText = document.querySelector('#directions').textContent;
+        const newRecipe = {
+            title: titleText,
+            ingredients: ingredientsText,
+            directions: directionsText,
+        };
+        console.log(newRecipe);
+        const response = await fetch('/api/recipe/create', {
+            body: JSON.stringify(newRecipe),
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+            },
+        });
+        if (response.ok) {
+            console.log('saveRecipe WORKED!');
+        } else {
+        console.log('saveRecipe screwed up again');
+        }
+    }
+}

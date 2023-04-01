@@ -19,19 +19,20 @@ Recipe.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true,
+      defaultValue: "null",
     },
     ingredients: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     directions: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     image: {
       type: DataTypes.STRING,

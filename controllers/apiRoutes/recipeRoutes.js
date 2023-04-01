@@ -8,11 +8,6 @@ router.get('/', (req, res) => {
 });
 
 
-
-
-// module.exports = router;
-
-// const express = require('express');
 const { Connection } = require('pg');
 // const router = require('express').Router();
 const { Recipe } = require('../../models');
@@ -67,6 +62,22 @@ router.post('/', async (req, res) => {
 
 
 // // Update a recipe
+router.post('/create', async (req, res) => {
+  console.log('trying to createRecipe');
+  const { title, ingredients, directions } = req.body;
+  if (!title || !ingredients || !directions) {
+    res.status(400);
+    return;
+  }
+  try {
+    const recipeData = await Recipe.create(req.body);
+
+    res.status(200).json(recipeData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 
 router.put('/:id', async (req, res) => {
   try {
