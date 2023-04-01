@@ -1,20 +1,20 @@
 
 
-class Recipe {
-    constructor(title, description, ingredients, directions) {
-        this.title = title;
-        this.description = description;
-        this.ingredients = ingredients;
-        this.directions = directions;
-    }
+// class Recipe {
+//     constructor(title, description, ingredients, directions) {
+//         this.title = title;
+//         this.description = description;
+//         this.ingredients = ingredients;
+//         this.directions = directions;
+//     }
 
-    printRecipe() {
-        console.log(`Recipe: ${this.title}`);
-        console.log(`Description: ${this.description}`);
-        console.log(`Ingredients: ${this.ingredients}`);
-        console.log(`directions: ${this.directions}`);
-    }
-};
+//     printRecipe() {
+//         console.log(`Recipe: ${this.title}`);
+//         console.log(`Description: ${this.description}`);
+//         console.log(`Ingredients: ${this.ingredients}`);
+//         console.log(`directions: ${this.directions}`);
+//     }
+// };
 
 
 // Example usage
@@ -24,14 +24,17 @@ class Recipe {
 //     "1. Cook spaghetti according to package instructions. \n2. Brown the ground beef in a large pan. \n3. Add onion and garlic, cook until softened. \n4. Add tomato sauce and bring to a simmer. \n5. Serve over spaghetti."
 // );
 
-const recipeContainer = document.querySelector('.recipe-list');
-const searchForm = document.querySelector('#search-form input[type="submit"]');
+// const recipeContainer = document.querySelector('.recipe-list');
+// const searchForm = document.querySelector('#search-form input[type="submit"]');
 
 searchForm.addEventListener('click', (e) => {
 
     e.preventDefault();
     const searchTerm = document.querySelector('#search-input').value
     console.log('Search form clicked', "searchTerm", searchTerm);
+    if (searchTerm) {
+        getRecipes();
+    }
 });
 
 
